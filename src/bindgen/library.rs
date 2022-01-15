@@ -16,15 +16,15 @@ use crate::bindgen::ItemType;
 
 #[derive(Debug, Clone)]
 pub struct Library {
-    config: Config,
-    constants: ItemMap<Constant>,
-    globals: ItemMap<Static>,
-    enums: ItemMap<Enum>,
-    structs: ItemMap<Struct>,
-    unions: ItemMap<Union>,
-    opaque_items: ItemMap<OpaqueItem>,
-    typedefs: ItemMap<Typedef>,
-    functions: Vec<Function>,
+    pub config: Config,
+    pub constants: ItemMap<Constant>,
+    pub globals: ItemMap<Static>,
+    pub enums: ItemMap<Enum>,
+    pub structs: ItemMap<Struct>,
+    pub unions: ItemMap<Union>,
+    pub opaque_items: ItemMap<OpaqueItem>,
+    pub typedefs: ItemMap<Typedef>,
+    pub functions: Vec<Function>,
 }
 
 impl Library {

@@ -339,6 +339,10 @@ impl Builder {
     }
 
     pub fn generate(self) -> Result<Bindings, Error> {
+        self.gen_to_library()?.generate()
+    }
+
+    pub fn gen_to_library(self) -> Result<Library, Error> {
         let mut result = Parse::new();
 
         if self.std_types {
@@ -367,7 +371,7 @@ impl Builder {
             result.extend_with(&parser::parse_lib(cargo, &self.config)?);
         }
 
-        Library::new(
+        Ok(Library::new(
             self.config,
             result.constants,
             result.globals,
@@ -377,8 +381,11 @@ impl Builder {
             result.opaque_items,
             result.typedefs,
             result.functions,
-        )
-        .generate()
+        ))
+    }
+
+    pub fn get_config(&self) -> Config {
+        self.config.clone()
     }
 }
 
